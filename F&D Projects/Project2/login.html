@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <style>
+            body{
+                background: url(xxx.gif);
+                background-size: cover;
+                display:flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .container>.box{
+                border: solid black;
+                border-radius: 25px;
+                height: 400px;
+                width: 500px;
+                background-color: azure;
+                opacity: 70%;
+            }
+            .box{
+                display:flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 150px;
+                padding-bottom: 50px;
+            }
+            .box:hover{
+                transform: scale(1.2);
+            }
+            p{
+                font-size: 60px;
+                font-weight: 1000;
+                color: darkviolet;
+            }
+            p:hover{
+                color: midnightblue;
+            }
+            .input-tag{
+                width: 400px;
+                height: 40px;
+                margin: 10px;
+                border:1px solid rgb(117, 25, 239);
+                border-radius: 10px;
+                padding-left: 10px;
+            }
+            .btn-tag{
+                background-color: rgb(49, 9, 49);
+                color: white;
+                font-size: 30px;
+                font-weight: bold;
+                border: none;
+                border-radius: 20px;
+                padding: 5px 20px;
+                cursor:pointer;
+                margin-top: 20px;
+            }
+            .btn-tag:hover{
+                background-color: midnightblue;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+        <form class="box" method="post" name="form" onsubmit="return getValues()">
+                <p>LOGIN</p>
+                <input id="username" placeholder="Username" class="input-tag" type="text"></input>
+                <input id="password" placeholder="Password" class="input-tag" type="password"></input>
+                <input class="btn-tag" type="submit" name="" value="LOGIN">
+        </form>
+        </div>
+        <script>
+            const getValues=()=>{
+            var data = {
+                username:"Admin",
+                password:"12345678"
+            };
+            var username = document.getElementById("username");
+            var password = document.getElementById("password");
+            var message = document.getElementById("message");
+            if(username.value===data.username && password.value===data.password){
+                window.open("index.html", "_self")
+                return false;
+            }
+            else{
+                alert("login failed");
+                // window.open("login.html")
+                window.location.reload()
+                return false;
+            }
+            };
+        </script>
+    </body>
+</html>

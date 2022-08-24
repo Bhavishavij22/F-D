@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <style>
+            body{
+                background-color: pink;
+            }
+            #insert{
+                justify-content: center;
+                align-items: center;
+                margin: 10px;
+                padding: 10px;
+                font-size: 25px;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <div>
+                <button
+                style="
+                background-color: rgb(35, 237, 237);
+                color: white;
+                border-radius: 10px;
+                cursor:pointer;
+                border:none;
+                width: 300px;
+                height: 100px;
+                font-size: 75px;"
+                onclick="get()"
+                >
+                    GET
+                </button>
+            </div>
+            <div id="insert">
+            </div>
+        </center>
+        <script>
+            const get=()=>{
+                var ins=document.getElementById("insert");
+                let url="https://jsonplaceholder.typicode.com/albums";
+                fetch(url).then(
+                    (res)=>{return res.json();}
+                )
+                .then(
+                    (resp)=>{
+                        // console.log(resp);
+                        const tobe = resp.map(
+                            (albums)=>{
+                                if(albums.userId!=3 &&albums.userId!=5){
+                                    return `
+                                    <b>
+                                    <p><li>title : ${albums.title}</p>
+                                    <p>user ID : ${albums.userId}</p></b>
+                                    <br>
+                                    `
+                                }
+                            }
+                        ).join(" ");
+                        ins.innerHTML=tobe;
+                    }
+                )
+            }
+        </script>
+    </body>
+</html>
